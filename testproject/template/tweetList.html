@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center text-white">welcome to our first testing project</h1>
+{% endblock content %}
+
+<a class="btn btn-primary" href="{% url 'tweetCreate' %}">Create tweet</a>
+<div class="container row gap-3">
+    
+    {% for tweet in tweets %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{tweet.photo.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{tweet.user.username}}</h5>
+          <p class="card-text">{{tweet.text}}</p>
+          <a href="{% url 'tweetEdit' tweet.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'tweetDelete' tweet.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>   
+    {% endfor %}
+        
+</div>
